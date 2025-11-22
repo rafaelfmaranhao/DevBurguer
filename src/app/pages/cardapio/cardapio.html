@@ -9,11 +9,12 @@
             <h3>Seção Junior</h3>
             <div class="cards-container">
                 @for (item of flashCardJunior; track $index) {
-                <app-flashcards 
-                    [nome]="item.nome" 
-                    [preco]="item.preco" 
-                    [descricao]="item.descricao"
-                    [urlFoto]="item.urlFoto"></app-flashcards>
+                    <app-flashcards 
+                        [nome]="item.nome" 
+                        [preco]="item.preco" 
+                        [descricao]="item.descricao"
+                        [urlFoto]="item.urlFoto"
+                    ></app-flashcards>
                 }
             </div>
         </section>
@@ -21,11 +22,11 @@
             <h3>Seção Sênior</h3>
             <div class="cards-container">
                 @for (item of flashCardSenior; track $index) {
-                <app-flashcards 
-                    [nome]="item.nome" 
-                    [preco]="item.preco" 
-                    [descricao]="item.descricao"
-                    [urlFoto]="item.urlFoto"
+                    <app-flashcards 
+                        [nome]="item.nome" 
+                        [preco]="item.preco" 
+                        [descricao]="item.descricao"
+                        [urlFoto]="item.urlFoto"
                     ></app-flashcards>
                 }
             </div>
@@ -34,8 +35,12 @@
             <h3>Seção Pleno</h3>
             <div class="cards-container">
                 @for (item of flashCardJunior; track $index) {
-                <app-flashcards [nome]="item.nome" [preco]="item.preco" [descricao]="item.descricao"
-                    [urlFoto]="item.urlFoto"></app-flashcards>
+                    <app-flashcards 
+                        [nome]="item.nome" 
+                        [preco]="item.preco" 
+                        [descricao]="item.descricao"
+                        [urlFoto]="item.urlFoto"
+                    ></app-flashcards>
                 }
             </div>
         </section>
