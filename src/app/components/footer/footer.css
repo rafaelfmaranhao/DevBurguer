@@ -33,7 +33,6 @@ footer {
   color: #f97316;
 }
 
-
 .burger {
   font-size: 38px;
 }
@@ -117,4 +116,81 @@ hr {
   border: none;
   background-color: #333333;
   
+}
+
+@media (max-width: 900px) {
+  footer .container {
+    gap: 30px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .diferente {
+    font-size: 26px;
+  }
+
+  .txt {
+    max-width: 250px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  footer {
+    text-align: left;
+  }
+
+  footer .container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    justify-content: flex-start;
+    top: 0;
+  }
+
+  .logo-container lucide-icon {
+    left: 0;
+    top: 0;
+  }
+
+  .logo-container app-logomarca {
+    left: 0;
+    top: 0;
+  }
+
+  .links {
+    margin-top: 0;
+  }
+
+  .contatos {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .redes {
+    margin-top: 0;
+  }
+
+  .rede {
+    gap: 6px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 0.85rem;
+  }
+
+  .txt {
+    font-size: 11px;
+    max-width: 100%;
+  }
 }
