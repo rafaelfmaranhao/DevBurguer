@@ -13,9 +13,14 @@ input {
     color: white;
     font-size: 17px;
     font-weight: 700;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 input:hover {
     filter: brightness(0.85);
+    transition: transform 0.15s;
+}
+
+input:active {
+    transform: translateY(2px) scale(0.97);
 }
