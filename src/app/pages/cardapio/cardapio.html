@@ -1,10 +1,10 @@
 <app-header></app-header>
 <section class="cardapio">
+    <div class="titulo-secao">
+        <h2>Nosso Cardápio</h2>
+        <p>Explore nossa seleção de hambúrgueres artesanais desenvolvidos com os melhores ingredientes</p>
+    </div>
     <div class="container">
-        <div class="titulo-secao">
-            <h2>Nosso Cardápio</h2>
-            <p>Explore nossa seleção de hambúrgueres artesanais desenvolvidos com os melhores ingredientes</p>
-        </div>
         <section class="cards-section">
             <h3>Seção Junior</h3>
             <div class="cards-container">
@@ -34,7 +34,7 @@
         <section class="cards-section">
             <h3>Seção Pleno</h3>
             <div class="cards-container">
-                @for (item of flashCardJunior; track $index) {
+                @for (item of flashCardPleno; track $index) {
                     <app-flashcards 
                         [nome]="item.nome" 
                         [preco]="item.preco" 

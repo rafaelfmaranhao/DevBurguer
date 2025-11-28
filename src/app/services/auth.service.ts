@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  // Cadastrar novo usuário
   cadastrar(usuario: { nomeUsuario: string, senha: string }) {
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     const usuarioExist = usuarios.find((u: any) => u.usuario === usuario.nomeUsuario);
@@ -19,7 +18,6 @@ export class AuthService {
     return { success: true, message: 'Cadastro realizado com sucesso!'}
   }
 
-  // Login de usuário
   login(usuario: { nomeUsuario: string, senha: string}) {
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     const usuarioValido = usuarios.find(
@@ -33,12 +31,10 @@ export class AuthService {
     return { success: false, message: 'Usuário ou senha inválidos!' };
   }
 
-  // Logout de usuário
   logout() {
     localStorage.removeItem('usuarioLogado');
   }
 
-  // Verifica se o usuário está logado
   isLogged() {
     return !!localStorage.getItem('usuarioLogado');
   }

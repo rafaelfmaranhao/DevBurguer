@@ -1,17 +1,15 @@
 <main class="itens">
-  <div class="container">
-    <article class="card" role="listitem">
-      <div class="card-image">
-        <img [src]="urlFoto" alt="Burguer Img">
-      </div>
-      <div class="info">
-        <h3>{{ nome }}</h3>
-        <p class="desc">{{ descricao }}</p>
-        <p class="preco">{{ preco }}</p>
-      </div>
-      <div class="button">
-        <app-btn tipo="button" valor="Comprar"></app-btn>
-      </div>
-    </article>
-  </div>
+  <article class="card" role="listitem">
+    <div class="card-image">
+      <img [src]="urlFoto" alt="Burguer Img">
+    </div>
+    <div class="info">
+      <h3>{{ nome }}</h3>
+      <p class="desc">{{ descricao }}</p>
+      <p class="preco">{{ preco }}</p>
+    </div>
+    <div class="button">
+      <app-btn tipo="button" valor="Comprar"></app-btn>
+    </div>
+  </article>
 </main>

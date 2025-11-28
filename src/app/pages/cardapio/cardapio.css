@@ -1,4 +1,27 @@
-h2 {
+.cardapio {
+    background-color: #111;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.container {
+    overflow: visible;
+}
+
+.titulo-secao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background-color: #1a1a1a;
+    gap: 0.5rem;
+    height: 20vh;
+    margin: 75px 0px;
+}
+
+.titulo-secao h2 {
     background: linear-gradient(90deg, rgba(252, 154, 69, 1) 0%, rgba(253, 59, 29, 1) 100%);
     background-clip: text;
     color: transparent;
@@ -6,32 +29,17 @@ h2 {
     font-size: 46px;
 }
 
-p {
+.titulo-secao p {
     color: #aaa;
     font-size: 15px;
 }
 
-.container {
-    margin-top: 75px;
-}
-
-.cardapio {
-    background-color: #111;
-    color: #fff;
-    padding: 2rem
-}
-
-.titulo-secao {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-}
-
 .cards-section {
-    margin-bottom: 30px;
+    border: 1px solid #ff6021;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    overflow: visible;
 }
 
 .cards-section h3 {
@@ -39,10 +47,11 @@ p {
     background-clip: text;
     color: transparent;
     font-size: 34px;
+    margin-bottom: 12px;
 }
 
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }

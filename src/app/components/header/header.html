@@ -16,12 +16,13 @@
                 </ul>
             </nav>
         </div>
-        <lucide-icon name="SquareMenu" color="#f97316" class="nav-icon" (click)="toggleMenu()"></lucide-icon>
+        <lucide-icon name="SquareMenu" class="nav-icon" (click)="toggleMenu()" size="28px" color="#f97316"></lucide-icon>
         <div class="user">
-            <p>{{ nomeUsuario }}</p>
-            @if (nomeUsuario !== 'Visitante') {
+            @if (logado) {
+                <p (click)="logout()">{{ nomeUsuario }}</p>
                 <lucide-icon name="LogOut" color="white" (click)="logout()" title="Sair"></lucide-icon>
             } @else {
+                <p>{{ nomeUsuario }}</p>
                 <lucide-icon name="LogIn" color="white" routerLink="/login" title="Entrar"></lucide-icon>
             }
         </div>

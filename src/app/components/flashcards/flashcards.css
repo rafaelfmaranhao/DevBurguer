@@ -1,6 +1,5 @@
 main {
     background-color: #111;
-    overflow: hidden;
 }
 
 .itens .container {
@@ -12,8 +11,10 @@ main {
 .card {
     display: flex;
     flex-direction: column;
-    height: 550px;
-    margin: 4px;
+    min-height: 550px;
+    max-width: 320px;
+    width: 100%;
+    margin: 12px auto;
     background: #1f1f1f;
     border: 1px solid #424242;
     border-radius: 8px;
@@ -34,6 +35,9 @@ main {
 
 .card-image img {
     width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
     transition: transform 0.4s ease;
 }
 

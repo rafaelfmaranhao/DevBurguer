@@ -14,16 +14,19 @@ import { LucideAngularModule } from 'lucide-angular';
 export class Header implements OnInit {
   nomeUsuario = '';
   menuAberto = false;
+  logado = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
 
-    if (!usuario.nomeUsuario) {
-      this.nomeUsuario = 'Visitante';
+    if (!this.auth.isLogged()) {
+      this.nomeUsuario = 'Login';
+      this.logado = false;
     } else {
       this.nomeUsuario = usuario.nomeUsuario;
+      this.logado = true;
     }
   }
 
