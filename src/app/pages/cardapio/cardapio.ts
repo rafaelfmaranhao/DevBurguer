@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Header } from "../../components/header/header";
 import { Footer } from "../../components/footer/footer";
 import { Flashcards } from "../../components/flashcards/flashcards";
-import { Card } from '../../model/card';
+import { Card } from '../../models/card.model';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({

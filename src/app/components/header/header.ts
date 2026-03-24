@@ -1,7 +1,7 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { Logomarca } from '../logomarca/logomarca';
 import { LucideAngularModule } from 'lucide-angular';
 
@@ -12,20 +12,20 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './header.css'
 })
 export class Header implements OnInit {
-  nomeUsuario = '';
+  nome = '';
   menuAberto = false;
   logado = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
 
-    if (!this.auth.isLogged()) {
-      this.nomeUsuario = 'Login';
+    if (!this.authService.isLogged()) {
+      this.nome = 'Login';
       this.logado = false;
     } else {
-      this.nomeUsuario = usuario.nomeUsuario;
+      this.nome = usuario.nome;
       this.logado = true;
     }
   }
@@ -42,7 +42,7 @@ export class Header implements OnInit {
   }
   
   logout() {
-    this.auth.logout();
+    this.authService.logout();
     window.location.reload();
   }
 }

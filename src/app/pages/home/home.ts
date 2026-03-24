@@ -4,7 +4,7 @@ import { Slides } from '../../components/slides/slides';
 import { FrasesSlider } from "../../components/frases-slider/frases-slider";
 import { Flashcards } from '../../components/flashcards/flashcards';
 import { Footer } from '../../components/footer/footer';
-import { Card } from '../../model/card';
+import { Card } from '../../models/card.model';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
 

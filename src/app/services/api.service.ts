@@ -1,26 +1,9 @@
-// src/app/services/api.service.ts
-// Cole este arquivo no seu projeto Angular e injete onde precisar
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Usuario {
-  id?: number;
-  nome: string;
-  email: string;
-  ativo?: boolean;
-  criado_em?: string;
-}
-
-export interface Produto {
-  id?: number;
-  nome: string;
-  descricao?: string;
-  preco: number; // em centavos
-  estoque?: number;
-  criado_em?: string;
-}
+import { Usuario } from '../models/usuario.model';
+import { Produto } from '../models/produto.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {

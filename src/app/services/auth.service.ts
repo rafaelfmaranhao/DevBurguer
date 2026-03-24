@@ -1,41 +1,66 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable, tap, catchError, of, map } from 'rxjs';
+
+import {
+  CadastroPayload,
+  LoginPayload,
+  LoginResposta,
+  UsuarioLogado
+} from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  private baseUrl = 'http://localhost:8000/api';
 
-  cadastrar(usuario: { nomeUsuario: string, senha: string }) {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuarioExist = usuarios.find((u: any) => u.usuario === usuario.nomeUsuario);
+  constructor(private http: HttpClient, private router: Router) {}
 
-    if (usuarioExist) return { success: false, message: 'Usuário já existe!' };
-
-    usuarios.push(usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    return { success: true, message: 'Cadastro realizado com sucesso!'}
-  }
-
-  login(usuario: { nomeUsuario: string, senha: string}) {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuarioValido = usuarios.find(
-      (u: any) => u.nomeUsuario === usuario.nomeUsuario && u.senha === usuario.senha
+  cadastrar(usuario: CadastroPayload): Observable<{ success: boolean; message: string }> {
+    return this.http.post(`${this.baseUrl}/usuarios`, usuario).pipe(
+      map(() => ({ success: true, message: 'Cadastro realizado com sucesso!' })),
+      catchError(err => {
+        const message = err.error?.detail === 'E-mail já cadastrado'
+          ? 'E-mail já cadastrado!'
+          : 'Erro ao realizar cadastro.';
+        return of({ success: false, message });
+      })
     );
-
-    if (usuarioValido) {
-      localStorage.setItem('usuarioLogado', JSON.stringify(usuarioValido));
-      return { success: true }
-    }
-    return { success: false, message: 'Usuário ou senha inválidos!' };
   }
 
-  logout() {
+  login(credenciais: LoginPayload): Observable<{ success: boolean; message?: string }> {
+    return this.http.post<LoginResposta>(`${this.baseUrl}/auth/login/`, credenciais).pipe(
+      tap(resposta => {
+        const usuarioLogado: UsuarioLogado = {
+          id: resposta.usuario_id,
+          nome: resposta.nome,
+          email: credenciais.email
+        };
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+      }),
+      map(() => ({ success: true })),
+      catchError(err => {
+        const message = err.status === 401
+          ? 'E-mail ou senha inválidos!'
+          : 'Erro ao realizar login.';
+        return of({ success: false, message });
+      })
+    );
+  }
+
+  logout(): void {
     localStorage.removeItem('usuarioLogado');
+    this.router.navigate(['/login']);
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return !!localStorage.getItem('usuarioLogado');
+  }
+
+  getUsuarioLogado(): UsuarioLogado | null {
+    const dados = localStorage.getItem('usuarioLogado');
+    return dados ? JSON.parse(dados) : null;
   }
 }

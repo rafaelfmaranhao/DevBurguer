@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Logomarca } from "../../components/logomarca/logomarca";
 import { Btn } from '../../components/btn/btn';
-import { BtnInfo } from '../../model/btn';
+import { BtnInfo } from '../../models/btn.model';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
@@ -14,19 +14,24 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './cadastro.css'
 })
 export class Cadastro {
-  nomeUsuario = '';
+  nome = '';
+  email = '';
   senha = '';
   mensagem = '';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   cadastrar() {
-    const resultado = this.auth.cadastrar({ nomeUsuario: this.nomeUsuario, senha: this.senha });
-    this.mensagem = resultado.message;
-
-    if (resultado.success) {
-      setTimeout(() => this.router.navigate(['/login']), 1500);
-    }
+    this.authService.cadastrar({
+      nome: this.nome,
+      email: this.email,
+      senha: this.senha
+    }).subscribe(resultado => {
+      this.mensagem = resultado.message;
+      if (resultado.success) {
+        setTimeout(() => this.router.navigate(['/login']), 1500);
+      }
+    })
   }
 
   btnInfo: BtnInfo[] = [

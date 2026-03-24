@@ -19,10 +19,10 @@
         <lucide-icon name="SquareMenu" class="nav-icon" (click)="toggleMenu()" size="28px" color="#f97316"></lucide-icon>
         <div class="user">
             @if (logado) {
-                <p (click)="logout()">{{ nomeUsuario }}</p>
+                <p (click)="logout()">{{ nome }}</p>
                 <lucide-icon name="LogOut" color="white" (click)="logout()" title="Sair"></lucide-icon>
             } @else {
-                <p>{{ nomeUsuario }}</p>
+                <p>{{ nome }}</p>
                 <lucide-icon name="LogIn" color="white" routerLink="/login" title="Entrar"></lucide-icon>
             }
         </div>
