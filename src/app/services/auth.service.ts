@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   login(credenciais: LoginPayload): Observable<{ success: boolean; message?: string }> {
-    return this.http.post<LoginResposta>(`${this.baseUrl}/auth/login/`, credenciais).pipe(
+    return this.http.post<LoginResposta>(`${this.baseUrl}/auth/login`, credenciais).pipe(
       tap(resposta => {
         const usuarioLogado: UsuarioLogado = {
           id: resposta.usuario_id,
